@@ -1,24 +1,22 @@
+
+// initialize variable for data file in .json format with d3
 let data = d3.json("samples.json");
 console.log(data);
 
-
 // function that populates the metadata
 function demoInfo(sample){
-    //console.log(sample);
+    
 
     // use d3.json to get the data
     d3.json("samples.json").then((data) => {
         // retrieve all metadata
         let metadata = data.metadata;
-        //console.log(metadata);
         
         // filter with sample value
         let result = metadata.filter(sampleResult => sampleResult.id == sample);
-        //console.log(result);
 
         // access index 0 from the array
         let resultData = result[0];
-        //console.log(resultData);
 
         // clear the metaData and html out
         d3.select("#sample-metadata").html("");
@@ -34,9 +32,6 @@ function demoInfo(sample){
 
 // function that builds the graphs
 function buildBarChart(sample){
-    //console.log(sample);
-    //let data = d3.json("samples.json");
-    //console.log(data);
 
     d3.json("samples.json").then((data) => {
         // retrieve all sample data
@@ -130,12 +125,9 @@ function buildBubbleChart(sample){
     });
 }
 
-
 // function that initializes the dashboard
 function initialize(){
     // load the data from the .json file
-    //let data = d3.json("samples.json");
-    //console.log(data);
 
     // access the dropdown selector from the index.html file
     var select = d3.select("#selDataset");
@@ -143,7 +135,6 @@ function initialize(){
     // use d3.json to get the data
     d3.json("samples.json").then((data) => {
         let sampleNames = data.names;  // made an array of just the names
-        //console.log(sampleNames);
 
         // use a for each to create options for each sample in selector
         sampleNames.forEach((sample) => {
